@@ -1,0 +1,6 @@
+{
+    "enabled": true,
+    "seeder": "Tee\\Configuration\\Seeds\\DatabaseSeeder",
+    "provider": ["Tee\\Configuration\\ServiceProvider"],
+    "order": 25
+}
