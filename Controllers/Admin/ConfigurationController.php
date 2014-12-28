@@ -9,54 +9,6 @@ use View, Redirect, Validator, URL, Input;
 
 use Tee\System\Breadcrumbs;
 
-class ConfigurationSectionItem {
-    public $name;
-    public $title;
-
-    public function __construct($name, $title) {
-        $this->name = $name;
-        $this->title = $title;
-    }
-
-    public function getName() {
-        return $this->name;
-    }
-
-    public function getTitle() {
-        return $this->title;
-    }
-
-    public function getModel() {
-        $model = Configuration::where('name', '=', $this->name)->first();
-        return $model;
-    }
-
-    public function getValue() {
-        return $this->getModel()->value;
-    }
-}
-
-class ConfigurationSection {
-    private $items;
-    private $title;
-
-    public function __construct($title) {
-        $this->title = $title;
-    }
-
-    public function add($name, $title) {
-        $this->items[] = new ConfigurationSectionItem($name, $title);
-    }
-
-    public function getItems() {
-        return $this->items;
-    }
-
-    public function getTitle() {
-        return $this->title;
-    }
-}
-
 class ConfigurationController extends AdminBaseController {
 
     public function index() {
@@ -93,16 +45,7 @@ class ConfigurationController extends AdminBaseController {
     }
 
     public function listSection() {
-        $sections = [];
-
-        $basicSection = new ConfigurationSection('Configurações Básicas');
-        $basicSection->add('site.name', 'Nome do Síte');
-        $basicSection->add('site.telephone', 'Telefone');
-        $basicSection->add('site.address', 'Endereço');
-
-        $sections[] = $basicSection;
-
-        return $sections;
+        return \Tee\Config::listSection();
     }
     
 }
