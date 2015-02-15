@@ -10,7 +10,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('tee.configuration', function() {
+        $this->app->singleton('tee.configuration', function() {
             return new Services\ConfigurationService();
         });
 
