@@ -3,10 +3,11 @@
 namespace Tee\Configuration\Models;
 
 use Tee\System\Models\Model;
-
+use Tee\System\Traits\CurrentSiteTrait;
 use URL;
 
 class Configuration extends Model {
+    use CurrentSiteTrait;
 
 	public static $rules = [
 		'name' => 'required'

@@ -17,6 +17,8 @@ class CreateConfigurationsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->text('value');
+			$table->unsignedInteger('site_id');
+			$table->foreign('site_id')->references('id')->on('sites');
 			$table->timestamps();
 		});
 	}
